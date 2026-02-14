@@ -1,0 +1,32 @@
+# Common
+node_modules/
+dist/
+.env
+.DS_Store
+
+# Frontend (Vite/React)
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Backend (.NET)
+backend/**/bin/
+backend/**/obj/
+backend/**/.vs/
+backend/**/.user
+backend/**/.suo
+backend/**/.useroscs
+backend/**/App_Data/
+backend/**/Debug/
+backend/**/Release/
+*.user
+*.suo
+*.useroscs
+
+# Miscellaneous
+.vscode/
+.idea/
+*.log
