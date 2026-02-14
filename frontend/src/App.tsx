@@ -119,6 +119,7 @@ function App() {
   const [loginError, setLoginError] = useState('');
   const [auditLogs, setAuditLogs] = useState<AuditLog[]>(mockAuditLogs);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
   const [editingReport, setEditingReport] = useState<SalesReport | null>(null);
   const [addFormData, setAddFormData] = useState({
     productName: '',
@@ -860,7 +861,14 @@ function App() {
                         </div>
                         <div>
                           <h4 style={{ margin: 0, textTransform: 'uppercase', fontSize: '0.9rem', color: 'var(--text-main)' }}>Email Inquiry</h4>
-                          <p style={{ margin: '5px 0 0 0', color: 'var(--text-muted)', fontSize: '0.85rem' }}>support.portal@demo.gov</p>
+                          <p style={{ margin: '5px 0 0 0', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                            <span
+                              style={{ color: 'var(--accent)', cursor: 'pointer', textDecoration: 'underline', fontWeight: 600 }}
+                              onClick={() => setShowEmailModal(true)}
+                            >
+                              Click here to contact us
+                            </span>
+                          </p>
                         </div>
                       </div>
                       <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
@@ -1004,8 +1012,8 @@ function App() {
             <div style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-hover))', color: 'white', padding: '20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
               <div style={{ width: '40px', height: '40px', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: 'white', fontSize: '18px' }}>S</div>
               <div>
-                <h3 style={{ margin: 0, fontSize: '16px' }}>System</h3>
-                <p style={{ margin: '2px 0 0 0', fontSize: '12px', opacity: 0.9 }}>Demo Assistant</p>
+                <h3 style={{ margin: 0, fontSize: '16px' }}>Support</h3>
+                <p style={{ margin: '2px 0 0 0', fontSize: '12px', opacity: 0.9 }}>Digital Agent</p>
               </div>
             </div>
             <div style={{ flex: 1, padding: '20px', background: '#f8fafc', overflowY: 'auto' }}>
@@ -1070,6 +1078,46 @@ function App() {
           </svg>
         </button>
       </div>
+
+      {showEmailModal && (
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 3000 }}>
+          <div style={{ background: 'white', padding: '2.5rem', width: '100%', maxWidth: '500px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '2px solid var(--primary)', paddingBottom: '0.75rem' }}>
+              <h2 style={{ color: 'var(--primary)', margin: 0, textTransform: 'uppercase', fontSize: '1.2rem' }}>Contact Support</h2>
+              <button onClick={() => setShowEmailModal(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)' }}>
+                <X size={24} />
+              </button>
+            </div>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-main)', textTransform: 'uppercase' }}>Your Message</label>
+              <textarea
+                placeholder="Write your message to the support team here..."
+                rows={5}
+                maxLength={700}
+                style={{ width: '100%', padding: '12px', border: '1px solid var(--border-color)', outline: 'none', resize: 'vertical' }}
+              />
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
+                Max 700 characters
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <button
+                disabled
+                className="refresh-btn"
+                style={{ flex: 1, padding: '10px', opacity: 0.6, cursor: 'not-allowed' }}
+              >
+                Submit Inquiry
+              </button>
+              <button
+                onClick={() => setShowEmailModal(false)}
+                style={{ flex: 1, padding: '10px', background: 'none', border: '1px solid var(--border-color)', fontWeight: 600, textTransform: 'uppercase', cursor: 'pointer' }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
