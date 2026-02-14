@@ -48,7 +48,7 @@ function App() {
   const fetchReports = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/report');
+      const response = await fetch('https://report-portal-web.onrender.com/api/report');
       const data = await response.json();
       setReports(data);
     } catch (error) {
@@ -745,7 +745,7 @@ function App() {
 
                       <div style={{ background: '#ffffff', color: 'var(--text-main)', padding: '1rem', marginBottom: '1.5rem', border: '1px solid var(--border-color)', borderLeft: '4px solid var(--primary)' }}>
                         <div style={{ fontSize: '0.65rem', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '0.4rem', color: 'var(--text-muted)' }}>Resource Access URL (Production)</div>
-                        <code style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--primary)' }}>http://localhost:5000/api/report</code>
+                        <code style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--primary)' }}>https://report-portal-web.onrender.com/api/report</code>
                       </div>
 
                       <div style={{ marginTop: '1.5rem' }}>
